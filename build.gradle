@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'war'
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+compileJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'  
+webAppDirName = 'WebContent'
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   compile fileTree(dir: "WebContent/WEB-INF/lib", include: '*.jar')      
+   providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+jar{
+  baseName = 'InMethodWeb'
+}
+war{
+  from('src/resources') {
+    include '*.properties'
+    into('WEB-INF/classes/resources')
+  }
+  exclude 'WEB-INF/lib/*','WEB-INF/web.xml'
+  baseName = 'InMethodWeb'
+  webXml = file('WebContent/WEB-INF/web.xml')
+}

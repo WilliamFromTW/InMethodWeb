@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BackEndGenEmployeePdfServlet" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36ae3a8a-4648-41ec-8ede-e12a2a3b7fcf">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<parameter name="UserID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `USERS`.`USER_NAME`,
+	`EMPLOYEE`.`USER_NAME` AS LOCAL_NAME,
+	`EMPLOYEE`.`USER_ENGLISH_NAME`,
+	`EMPLOYEE`.`USER_MAIL`,
+	`USERS`.`USER_VALIDATE`,
+	CONCAT( USER_ROLES.ROLE_NAME,'(',ROLE_DESC,')') AS ROLE_NAME,
+	CONCAT( FUNCTION_INFO.FUNCTION_DESC,'(',ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME,')') AS FUNCTION_DESC
+FROM `USERS`,
+	`USER_ROLES`,
+	`ROLE_LIST`,
+	`EMPLOYEE`,
+	`ROLE_AUTHORIZED_PERMISSION`,
+	`FUNCTION_INFO`
+WHERE 
+	 `FUNCTION_INFO`.`FUNCTION_NAME` = `ROLE_AUTHORIZED_PERMISSION`.`FUNCTION_NAME` 
+	 AND `ROLE_LIST`.`ROLE_NAME` = `ROLE_AUTHORIZED_PERMISSION`.`FUNCTION_ROLE` 
+	 AND `ROLE_LIST`.`ROLE_NAME` = `USER_ROLES`.`ROLE_NAME` 
+	 AND `USERS`.`USER_NAME` like $P{UserID}
+	 AND `USERS`.`USER_NAME` = `USER_ROLES`.`USER_NAME` 
+	 AND `USERS`.`USER_NAME` = `EMPLOYEE`.`USER_ID` 
+ORDER BY 1 DESC,
+	2 DESC,
+	3 DESC,
+	4 DESC,
+	5 DESC,
+	6 DESC]]>
+	</queryString>
+	<field name="user_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="USER_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="local_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="USER_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="local_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="user_english_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="USER_ENGLISH_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_english_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="user_mail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="USER_MAIL"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_mail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="user_validate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="USER_VALIDATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_validate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="role_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="role_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="role_name"/>
+	</field>
+	<field name="function_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="function_desc"/>
+		<property name="com.jaspersoft.studio.field.label" value="function_desc"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement key="KafeiouImage" x="142" y="10" width="272" height="50" uuid="ce797b72-b25b-406f-9686-c75d1534041c"/>
+				<imageExpression><![CDATA["S:/developer/project/inmethod/java/web/WebContent/images/cropped-kafeiou_logo2.png"]]></imageExpression>
+			</image>
+			<textField pattern="YYYY/MM/dd HH:mm:ss">
+				<reportElement x="460" y="40" width="100" height="20" uuid="8cb183e9-5398-4648-b792-969a60bcdea3"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="10" y="0" width="535" height="15" uuid="d781a9bf-88a6-4612-9e90-9e0ddb27e98b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="1" width="40" height="15" uuid="da222229-559d-462d-bbfb-a9411c333f5d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[帳號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="30" height="15" uuid="8abd52f3-58f6-443e-9419-e828209ff008"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[有效]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="1" width="40" height="15" uuid="38bc2f30-53e7-4994-a3f7-e2b2bd761eed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[名字]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="54" height="15" uuid="77752e6a-5a7f-4259-ab9f-e78dd41aee2c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="42" height="14" uuid="07596984-44ef-449e-9186-e7caf4ee74fb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[角色]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="1" width="24" height="14" uuid="0dfea29a-e084-499b-8565-caf20010f269"/>
+				<text><![CDATA[程式]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="1" width="40" height="20" uuid="8eb935c8-e5a9-44ec-acce-e4924d4ff874"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="1" width="60" height="20" uuid="7fc0f7c3-97ce-4574-83e9-8daf2599b69a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{local_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="0" width="94" height="20" uuid="235f2d65-a3a6-40af-8c16-512fb9c60964"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_mail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="30" height="20" uuid="d8b30a11-1872-4e77-82c8-257ab3a2a55a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Unicode MS" pdfFontName="Arial Unicode MS" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_validate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="1" width="100" height="19" uuid="87e01803-d083-49d3-a8b0-4cff672e18b6"/>
+				<textFieldExpression><![CDATA[$F{role_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="360" y="3" width="185" height="16" uuid="7ecad60f-be12-49b5-b806-8d7f350382a0"/>
+				<textFieldExpression><![CDATA[$F{function_desc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

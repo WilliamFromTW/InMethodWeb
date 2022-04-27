@@ -1,0 +1,13 @@
+SHELL=/bin/bash
+PATH=/usr/local/java/bin:/sbin:/bin:/usr/sbin:/usr/bin:
+HOME=/
+MAILFROM=xxx@test.com
+MAILTO=yyy@test.com
+
+##############################################################################
+# misc
+##############################################################################
+0 1 * * 0 /usr/bin/systemctl stop mariadb
+1 1 * * 0 /bin/tar cvfz /tmp/mysql.data.tgz /var/lib/mysql
+20 1 * * 0 /bin/tar cvfz /tmp/etc.tgz /etc
+30 1 * * 0 /usr/bin/systemctl start mariadb

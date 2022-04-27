@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>inmehod-AlinaWeb</display-name>
+
+	<!-- MS_DOMAIN_SERVER_HOST is for auth adapter , multi divide by # , paramter divide by ; -->	
+	<env-entry>
+		<env-entry-name>AD_SETTINGS</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>hlmt.com.tw;10.192.130.229;dc=hlmt,dc=com,dc=tw#hlmt.com.tw;10.192.130.229;dc=hlmt,dc=com,dc=tw</env-entry-value>
+	</env-entry>
+
+	
+	<env-entry>
+		<env-entry-name>FILE_TEMP_PATH</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/opt/tmp/</env-entry-value>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>FILE_PATH</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/opt/files/</env-entry-value>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>DATABASE_TYPE</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>MYSQL</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>MAIL_SERVER_HOST</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>10.192.130.145</env-entry-value>
+	</env-entry>
+		
+	<env-entry>
+		<env-entry-name>WEB_DB_HOST</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>localhost</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>WEB_DB_UID</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>root</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>WEB_DB_PWD</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>onepizza</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>WEB_DB</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>WEB</env-entry-value>
+	</env-entry>
+		
+	
+	<env-entry>
+		<env-entry-name>ENCODE</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>UTF-8</env-entry-value>
+	</env-entry>
+<!-- authentication -->
+	<env-entry>
+		<env-entry-name>AUTH_USER</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>AuthUsers</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>AUTH_KEY</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>AuthKeys</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+		<env-entry-name>USE_COOKIE_DOMAIN</env-entry-name>
+        <env-entry-type>java.lang.Boolean</env-entry-type>
+		<env-entry-value>false</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+		<env-entry-name>COOKIE_DOMAIN_AGE</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+		<env-entry-value>14400</env-entry-value>
+	</env-entry>
+		
+	<env-entry>
+		<env-entry-name>COOKIE_DOMAIN</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value></env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>AUTHENTICATION_CLASS</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>inmethod.auth.adapter.InMethodAuth</env-entry-value>
+	</env-entry>
+		
+    <error-page>
+      <error-code>500</error-code>
+      <location>/Error.jsp</location>
+    </error-page>
+
+    <error-page>
+      <exception-type>java.lang.Exception</exception-type>
+      <location>/Error.jsp</location>
+    </error-page>	
+<!-- end authentication -->
+		
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
