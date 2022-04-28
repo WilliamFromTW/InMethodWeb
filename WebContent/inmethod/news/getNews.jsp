@@ -15,10 +15,10 @@
 <div class=" row  clickable-row">
 <div class="col-sm-7">
 <div class="h5 d-flex   justify-content-center" id="general-news"><font color='red'><%=I18N.getValue(request,response,"general-news")%></font></div>
-		<div class="table-responsive"  id="table-responsive">
+		<div class="table-responsive-sm"  id="table-responsive">
 			<table id="bootstrap-table" data-toggle="bootstrap-table"
 				class="text-wrap table table-striped table-hover    table-sm " 
-				  	data-page-size='5'  data-search="true"  
+				  	data-page-size='5'  data-search="true"  data-show-search-clear-button="true"
 				data-pagination="true">
 				<thead class=" table-primary">
 					<tr id="bootstrap-table-head-tr"></tr>
@@ -35,14 +35,14 @@
 		<div class="col-sm-5">
         <div class="h6 justify-content-center" id="news-content">&nbsp;<br/><br/></div>
 		<div class="table-responsive"  ></div>
-					<table  id="table-subject"" data-toggle="bootstrap-table3" 	 class="text-wrap table " >
+					<table  id="table-subject"" data-toggle="bootstrap-table3" 	 class="text-wrap table">
 					</table>
 		</div>
 <div class="col-sm-7">
 <div class="h5 d-flex  justify-content-center" id="other-news"><font color='red'><%=I18N.getValue(request,response,"other-news")%> </font></div>
-		<div class="table-responsive"  id="table-responsive2">
+		<div class="table-responsive-sm"  id="table-responsive2">
 			<table id="bootstrap-table2" data-toggle="bootstrap-table2"
-				class="text-wrap table table-striped  table-hover  table-bordered table-sm " 
+				class="text-wrap table table-striped  table-hover  table-bordered table-sm" 
 			  	data-page-size='5'  data-search="true"  
 				data-pagination="true">
 					<thead class=" table-primary">
@@ -79,7 +79,7 @@
 </script>
 
 <link type="text/css" rel="stylesheet" href="jsgrid/jsgrid.min.css" />
-<link type="text/css" rel="stylesheet"
-	href="jsgrid/jsgrid-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="jsgrid/jsgrid-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="css/table.css" />
 <script type="text/javascript" src="jsgrid/jsgrid.min.js"></script>
 </HTML>

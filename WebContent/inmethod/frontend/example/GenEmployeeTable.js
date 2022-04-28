@@ -63,7 +63,12 @@ $(function() {
 			    baseHref = bases[0].href;
 			  }
 			  $tabletr.html(d.FIELD_NAME);
-			  $table.bootstrapTable({data: d.JSON})	
+			  $table.bootstrapTable({
+				data: d.JSON,
+                onClickRow:function(row, $element, field){
+	              alert(row.user_mail);
+                }
+              })	
 			  $table.bootstrapTable('load', d.JSON);
 			}  
 			else

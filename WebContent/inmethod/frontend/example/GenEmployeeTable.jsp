@@ -37,10 +37,10 @@ if (!isLogin(request, response)) {
 
 		<div id='Msg'  align="center"  class="w-25">
 		</div>
-		<div class="table-responsive"  >
+		<div class="table-responsive-sm"  >
 			<table id="bootstrap-table" data-toggle="bootstrap-table"
-				class="text-nowrap table table-striped  table-hover "
-				data-page-size='25' data-search="true" data-show-refresh="true"
+				class="text-wrap table table-striped  table-hover table-sm"
+				data-page-size='25' data-search="true" 
 				data-pagination="true">
 				<thead>
 					<tr id="bootstrap-table-tr">
