@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ include file="/global.jsp"%><HTML>
+<%@ include file="/inmethod/global.jsp"%><HTML>
 <HEAD>
 <meta content="no-cache" http-equiv="Pragma"></meta>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"></meta>

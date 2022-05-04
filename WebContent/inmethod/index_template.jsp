@@ -1,6 +1,6 @@
 <%@page import="inmethod.*"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="/global.jsp"%>
+<%@ include file="/inmethod/global.jsp"%>
 
 <html>
 <head>
