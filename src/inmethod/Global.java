@@ -82,5 +82,16 @@ public class Global {
 			return aParseWebXml.lookup("WebContent/WEB-INF/web.xml",sKey);
 		}
 	}
+	public static String getCatalogNameByID(int iID) {
+		if( iID==1)
+		return  "台灣(TW)";
+		else if( iID==2) 
+			return "苏州(SU)";
+		else if( iID==3)
+			return "Việt Nam(VN)";
+		else 
+			return "unknown";
+
+	}
 	
 }

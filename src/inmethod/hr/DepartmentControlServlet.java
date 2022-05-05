@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.*;
 import java.io.*;
 
+import inmethod.Global;
 import inmethod.auth.AuthFactory;
 import inmethod.auth.RoleAuthorizedPermission;
 import inmethod.auth.inter_face.*;
@@ -123,7 +124,7 @@ public class DepartmentControlServlet extends HttpServlet {
 
 						while (aDS != null && aDS.next()) {
 							aDepartment = (Department) aDS.getData();
-							sReturn = sReturn +  "{\"Name\":\""+aDepartment.getCatalog()+"-"+ aDepartment.getDeptId()+"-"+aDepartment.getDeptName()+"\",\"Value\":\""+aDepartment.getDeptId() +"\"},";
+							sReturn = sReturn +  "{\"Name\":\""+Global.getCatalogNameByID( aDepartment.getCatalog())+"-"+aDepartment.getDeptName()+"\",\"Value\":\""+aDepartment.getDeptId() +"\"},";
 						}
 						if (sReturn.length() == 0) {
 							sReturn = "[{\"Name\":\"\",\"Value\":\"\"}]";
@@ -149,7 +150,7 @@ public class DepartmentControlServlet extends HttpServlet {
 
 						while (aDS != null && aDS.next()) {
 							aDepartment = (Department) aDS.getData();
-							sReturn = sReturn +  "{\"Name\":\""+aDepartment.getCatalog()+"-"+aDepartment.getDeptId()+"-"+aDepartment.getDeptName()+"\"},";
+							sReturn = sReturn +  "{\"Name\":\""+ Global.getCatalogNameByID( aDepartment.getCatalog())+"-"+aDepartment.getDeptName()+"\"},";
 						}
 						if (sReturn.length() == 0) {
 							sReturn = "[]";
