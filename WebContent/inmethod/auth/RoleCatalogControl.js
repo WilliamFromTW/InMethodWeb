@@ -159,7 +159,7 @@ $.getJSON(sFunctionUrl, {
 
 		    fields: [
 		        { name: "RoleCatalogId",title: "角色分類",css: "jsgrid", type: "text",width: 30,editing:false,align: "center"},
-		        { name: "RoleCatalogDesc",title: "角色分類名稱",css: "jsgrid", type: "text",width: 30,align: "center"},
+		        { name: "RoleCatalogDesc",title: "角色分類名稱",css: "jsgrid", type: "text",width: 30,align: "left"},
 		        { type: "control",width: 10,editButton: JSON.parse(jsonAuthorized.Update),deleteButton: JSON.parse(jsonAuthorized.Delete)}
 		    ]
 		});

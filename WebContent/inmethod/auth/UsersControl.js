@@ -167,13 +167,13 @@ $.getJSON(sFunctionUrl, {
 		        }
 		    },
 		    fields: [
-		        { name: "UserName",title: "帳號",css: "jsgrid", type: "select",width: 30,editing:false,
+		        { name: "UserName",title: "帳號",css: "jsgrid", type: "select",width: 30,editing:false,align: "left",
 		        	items:jsonJsGridSelectOptions1[0],
         		    textField: "Name",        	
         		    valueField: "Value"
 		        },
 		        { name: "UserPass",title: "密碼",css: "jsgrid", type: "text",width: 30,align: "center"},
-		        { name: "UserDesc",title: "備註",css: "jsgrid", type: "text",width: 30,align: "center"},
+		        { name: "UserDesc",title: "備註",css: "jsgrid", type: "text",width: 30,align: "left"},
 		        { name: "UserValidate",title: "是否有效",css: "jsgrid", type: "select",width: 20,
         		    items: [
 	        		         { Name: "否", Id: "N" },

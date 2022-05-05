@@ -165,12 +165,12 @@ $.when(
 		    },
 
 		    fields: [
-		        { name: "RoleName",title: "角色",css: "jsgrid", type: "select",width: 30,editing:false,
+		        { name: "RoleName",title: "角色",css: "jsgrid", type: "select",width: 30,editing:false,align: "left",
 		        	items:jsonJsGridSelectOptions1[0],
 	        		    textField: "Name",        	
 	        		    valueField: "Value"
 		        },
-		        { name: "FunctionName",title: "程式",css: "jsgrid", type: "select",width: 30,editing:false,
+		        { name: "FunctionName",title: "程式",css: "jsgrid", type: "select",width: 30,editing:false,align: "left",
 		        	items:jsonJsGridSelectOptions2[0],
         		    textField: "Name",        	
         		    valueField: "Value"

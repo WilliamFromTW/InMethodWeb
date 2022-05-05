@@ -101,7 +101,7 @@ public class RoleListControlServlet extends HttpServlet {
 						String sReturn = "";
 						while (aDS != null && aDS.next()) {
 							aRoleList = (RoleList) aDS.getData();
-							sReturn = sReturn + "{\"Name\":\""+aRoleList.getRoleDesc()+"\",\"Value\":\""+aRoleList.getRoleName()+"\"},";
+							sReturn = sReturn + "{\"Name\":\""+aRoleList.getRoleName()+"("+aRoleList.getRoleDesc()+")\",\"Value\":\""+aRoleList.getRoleName()+"\"},";
 						}
 						if (sReturn.length() == 0) {
 							sReturn = "[{\"Name\":\"\",\"Value\":\"\"}]";

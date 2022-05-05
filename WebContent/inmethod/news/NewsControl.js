@@ -317,6 +317,7 @@ $(function () {
                         validate: "required",
                         items: catalogData[0] ,
                         textField: "Name",
+                        align:"left",
                         valueField: "Value"
                     }, {
                         name: "Subject",
@@ -324,6 +325,7 @@ $(function () {
                         css: "jsgrid",
                         type: "text",
                         width: 30,
+                        align:"left",
                         validate: "required"
                     }, {
                         name: "Message",
@@ -332,6 +334,7 @@ $(function () {
                         type: "textarea",
                         width: 60,
                         validate: "required"             ,
+                        align:"left",
                         editTemplate: function(value, item) { 
 	
 	                        return this._asdfa="<textarea id='textareaID'>"+ br2nl(value,true).trim()+  "</textarea>";
@@ -345,6 +348,7 @@ $(function () {
                         css: "jsgrid",
                         type: "myDateField",
                         width: 6,
+                        align:"right",
                         validate: "required"
                     }, 
                     {
@@ -362,6 +366,7 @@ $(function () {
                         title: "File Name",
                         css: "jsgrid",
                         type: "text",
+                        align:"left",
                         width: 20
                     }, {
                         name: "UploadPath",

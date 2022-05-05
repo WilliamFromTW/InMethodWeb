@@ -164,9 +164,9 @@ $.getJSON(sFunctionUrl, {
 		    },
 
 		    fields: [
-		        { name: "RoleName",title: "角色",css: "jsgrid", type: "text",width: 30,editing:false,align: "center"},
-		        { name: "RoleDesc",title: "角色名稱",css: "jsgrid", type: "text",width: 30,align: "center"},
-		        { name: "RoleCatalogId",title: "角色分類",css: "jsgrid", type: "select",width: 30,
+		        { name: "RoleName",title: "角色",css: "jsgrid", type: "text",width: 30,editing:false,align: "lef"},
+		        { name: "RoleDesc",title: "角色名稱",css: "jsgrid", type: "text",width: 30,align: "left"},
+		        { name: "RoleCatalogId",title: "角色分類",css: "jsgrid", type: "select",width: 30,align: "center",
 		        	items:jsonJsGridSelectOptions[0],
         		    textField: "Name",        	
         		    valueField: "Value"		        	

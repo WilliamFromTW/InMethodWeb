@@ -193,15 +193,15 @@ $.getJSON(sFunctionUrl, {
                         textField: "Name",
                         valueField: "Value"
                  },			
-		        { name: "DeptId",title: "部門代號(Dept. ID)",css: "jsgrid", type: "text",width: 30,editing:false,align: "center",validate: "required",},
-		        { name: "DeptName",title: "部門名稱(Dept. Name)",css: "jsgrid", type: "text",width: 30,align: "center",validate: "required"},
-		        { name: "DeptLeaderId",title: "部門Leader_ID",css: "jsgrid", type: "select",width: 30,
+		        { name: "DeptId",title: "部門代號(Dept. ID)",css: "jsgrid", type: "text",width: 30,editing:false,align: "left",validate: "required",},
+		        { name: "DeptName",title: "部門名稱(Dept. Name)",css: "jsgrid", type: "text",width: 30,align: "left",validate: "required"},
+		        { name: "DeptLeaderId",title: "部門Leader_ID",css: "jsgrid", type: "select",width: 30,align: "left",
 		        	items:jsonJsGridSelectOptions2[0],
         		    textField: "Name",        	
         		    valueField: "Value"
 		        	
 		        },
-		        { name: "ParentdeptId",title: "上層部門代號(Leader Dept. Name)",css: "jsgrid", type: "select",width: 30,
+		        { name: "ParentdeptId",title: "上層部門代號(Leader Dept. Name)",css: "jsgrid", type: "select",width: 30,align: "left",
 		        	
 		        	items:jsonJsGridSelectOptions1[0],
         		    textField: "Name",        	

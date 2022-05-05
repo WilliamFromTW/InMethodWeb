@@ -162,9 +162,9 @@ $.getJSON(sFunctionUrl, {
 		    },
 
 		    fields: [
-		        { name: "FunctionName",title: "程式代號",css: "jsgrid", type: "text",width: 30,editing:false},
-		        { name: "FunctionUrl",title: "連結",css: "jsgrid", type: "text",width: 30},
-		        { name: "FunctionDesc",title: "程式名稱",css: "jsgrid", type: "text",width: 30,align: "center"},
+		        { name: "FunctionName",title: "程式代號",css: "jsgrid", type: "text",width: 30,editing:false,align: "left"},
+		        { name: "FunctionUrl",title: "連結",css: "jsgrid", type: "text",width: 30,align: "left"},
+		        { name: "FunctionDesc",title: "程式名稱",css: "jsgrid", type: "text",width: 30,align: "left"},
 		        { type: "control",width: 10,editButton: JSON.parse(jsonAuthorized.Update),deleteButton: JSON.parse(jsonAuthorized.Delete)}
 		    ]
 		});

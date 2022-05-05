@@ -166,12 +166,12 @@ $.getJSON(sFunctionUrl, {
 		    },
 
 		    fields: [
-		        { name: "UserName",title: "使用者",css: "jsgrid", type: "select",width: 30,editing:false,
+		        { name: "UserName",title: "使用者",css: "jsgrid", type: "select",width: 30,editing:false,align: "left",
 		        	items:jsonJsGridSelectOptions1[0],
         		    textField: "Name",        	
         		    valueField: "Value"
 	            },
-		        { name: "RoleName",title: "擁有之角色",css: "jsgrid", type: "select",width: 30,editing:false,
+		        { name: "RoleName",title: "擁有之角色",css: "jsgrid", type: "select",width: 30,editing:false,align: "left",
 		        	items:jsonJsGridSelectOptions2[0],
         		    textField: "Name",        	
         		    valueField: "Value"

@@ -180,18 +180,18 @@ $.getJSON(sFunctionUrl, {
 		    },
 
 		    fields: [
-		        { name: "FunctionRole", type: "select",css: "jsgrid",width: 20,editing:false,title:"角色",
+		        { name: "FunctionRole", type: "select",css: "jsgrid",width: 20,editing:false,title:"角色",align: "left",
 		        	items:jsonJsGridSelectOptions1[0],
         		    textField: "Name",        	
         		    valueField: "Value"
 	            },
-		        { name: "FunctionName", type: "select",css: "jsgrid",width: 50,editing:false,title:"程式",
+		        { name: "FunctionName", type: "select",css: "jsgrid",width: 50,editing:false,title:"程式",align: "left",
 		        	items:jsonJsGridSelectOptions2[0],
         		    textField: "Name",        	
         		    valueField: "Value"
 		        },
-		        { name: "FunctionGroup", type: "text",css: "jsgrid",width: 25,title:"群組名稱",align: "center"},
-		        { name: "FunctionDelete", type: "select",css: "jsgrid",width: 20,title:"刪除",
+		        { name: "FunctionGroup", type: "text",css: "jsgrid",width: 25,title:"群組名稱",align: "left"},
+		        { name: "FunctionDelete", type: "select",css: "jsgrid",width: 20,title:"刪除",align: "left",
         		    items: [
 	        		         { Name: "否", Id: "N" },
 	        		         { Name: "是", Id: "Y" }
