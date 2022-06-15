@@ -54,25 +54,33 @@ public class downloadDocument extends HttpServlet {
 		if (sFilePath == null || sFilePath.equals(""))
 			return;
 		try {
-			response.setHeader("Content-Disposition", "inline;filename=\"" + URLEncoder.encode( aDI.getFileName() + sFilePath.substring(sFilePath .lastIndexOf(".")) , "UTF-8")+  "\"");
+			String sUUName = URLEncoder.encode( aDI.getFileName() + sFilePath.substring(sFilePath .lastIndexOf(".")) , "UTF-8").replaceAll("\\+", "%20"); 
 			if (sFilePath.toLowerCase().indexOf("txt") != -1) {
+				response.setHeader("Content-Disposition", "inline;filename=" +sUUName+  ";filename*=utf-8''");
 				response.setContentType("text/plain");
 			} else if (sFilePath.toLowerCase().indexOf("doc") != -1||sFilePath.toLowerCase().indexOf("docx") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/msword");
 			} else if (sFilePath.toLowerCase().indexOf("xls") != -1||sFilePath.toLowerCase().indexOf("xlsx") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/vnd.ms-excel");
 			} else if (sFilePath.toLowerCase().indexOf("pdf") != -1) {
+				response.setHeader("Content-Disposition", "inline;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/pdf");
 			} else if (sFilePath.toLowerCase().indexOf("ppt") != -1 || sFilePath.toLowerCase().indexOf("pptx") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/ppt");
 			} else if (sFilePath.toLowerCase().indexOf("odt") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/vnd.oasis.opendocument.text");
 			} else if (sFilePath.toLowerCase().indexOf("ods") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/vnd.oasis.opendocument.spreadsheet");
 			} else if (sFilePath.toLowerCase().indexOf("odp") != -1) {
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/vnd.oasis.opendocument.presentation");
 			} else {
-				response.setHeader("Content-Disposition", "attachment;filename=\"" + URLEncoder.encode( aDI.getFileName() + sFilePath.substring(sFilePath .lastIndexOf(".")) , "UTF-8")+  "\"");
+				response.setHeader("Content-Disposition", "attachment;filename=" +sUUName+  ";filename*=utf-8''"+sUUName);
 				response.setContentType("application/octet-stream");
 			}
 			try {
