@@ -300,7 +300,7 @@ public class InMethodAuth implements WebAuthentication {
 			if (aUserRoles == null || aUserRoles.size() == 0 || !hasPermission(aUserRoles, sFunction))
 				return null;
 			for (int i = 0; i < aUserRoles.size(); i++) {
-				sTempCondition += ",'" + ((UserRoles)aUserRoles.get(i)).getRoleName() + "'";
+				sTempCondition += ",'" + ((UserRoles)aUserRoles.get(i)).getRoleName().trim() + "'";
 			//	System.out.println(" user Roles = " + aUserRoles.get(i));
 			}
 			sTempCondition += ")";
@@ -413,7 +413,7 @@ public class InMethodAuth implements WebAuthentication {
 			aUserRoles = getUserRoles(sUserID);
 			//System.out.println("aUserRoles size=" + aUserRoles.size());
 			for (int i = 0; i < aUserRoles.size(); i++) {
-				sTempCondition += ",'" + ((UserRoles)aUserRoles.get(i)).getRoleName() + "'";
+				sTempCondition += ",'" + ((UserRoles)aUserRoles.get(i)).getRoleName().trim() + "'";
 			//	System.out.println(" user Roles = " + aUserRoles.get(i));
 			}
 			sTempCondition += ")";
@@ -498,9 +498,9 @@ public class InMethodAuth implements WebAuthentication {
 
 		for (int i = 0; i < aRoles.size(); i++) {
 			if (sCondition == null)
-				sCondition = "'" +  ((UserRoles)aRoles.get(i)).getRoleName() + "'";
+				sCondition = "'" +  ((UserRoles)aRoles.get(i)).getRoleName().trim() + "'";
 			else
-				sCondition += ",'" +  ((UserRoles)aRoles.get(i)).getRoleName() + "'";
+				sCondition += ",'" +  ((UserRoles)aRoles.get(i)).getRoleName().trim() + "'";
 		//System.out.println("getAuthFunction(Vector aRoles),Role=" + aRoles.get(i));
 		}
 		try(Connection aConn = DBConnectionManager.getWebDBConnection().getConnection()) {
