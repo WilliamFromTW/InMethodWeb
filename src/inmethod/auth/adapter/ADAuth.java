@@ -628,7 +628,7 @@ public RoleAuthorizedPermission getAuthorizedFunctionInfo(String sUserID, String
  * get user describe
  */
 public String getUserNameByUserID(String sUserID) {
-	if (sUserID == null)
+	if (sUserID == null || sUserID.trim().equals(""))
 		return "";
 	return Employee.getInstance().getEmployee(sUserID).getUserName();
 }

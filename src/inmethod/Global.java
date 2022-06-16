@@ -68,18 +68,22 @@ public class Global {
 		    }  
 	}	  	
 	
-	/**
-	 * 
-	 * @param sKey get variable value
-	 * @return
-	 */
+
 	public String getEnvirenment(String sKey){
 		try {
 			return (String) env.lookup(sKey);
 		} catch (Exception e) {
 			e.printStackTrace();
 			parseWebXml aParseWebXml = new parseWebXml();
-			return aParseWebXml.lookup("WebContent/WEB-INF/web.xml",sKey);
+			// for eclipse
+			String sReturn = aParseWebXml.lookup("WebContent/WEB-INF/web.xml",sKey);
+			if( sReturn==null ) {
+				// for tomcat
+				sReturn =  aParseWebXml.lookup("WEB-INF/web.xml",sKey);
+				System.out.println("try to read tomcat xml file : "+sReturn );
+				return sReturn;
+			}
+			else return sReturn;
 		}
 	}
 	public static String getCatalogNameByID(int iID) {
