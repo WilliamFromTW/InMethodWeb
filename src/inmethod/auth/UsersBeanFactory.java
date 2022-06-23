@@ -1,5 +1,6 @@
 package inmethod.auth;
 
+import inmethod.Global;
 import inmethod.commons.rdb.*;
 import java.sql.*;
 import java.util.*;
@@ -25,13 +26,17 @@ public class UsersBeanFactory {
     aVector.add( aUsers.getUserPass() );
     aVector.add( aUsers.getUserValidate() );
     aVector.add( aUsers.getUserDesc() );
-    return SQLTools.getInstance().preparedInsert(aConn,"insert into USERS (USER_NAME,USER_PASS,USER_VALIDATE,USER_DESC)  values (?,?,?,?)",aVector);
+    int iReturn = SQLTools.getInstance().preparedInsert(aConn,"insert into USERS (USER_NAME,USER_PASS,USER_VALIDATE,USER_DESC)  values (?,?,?,?)",aVector);;
+	Global.refreshAuthenticatedFunctionInfoList();
+    return iReturn; 
   }
 
   public int delete(Users aUsers) throws Exception{
     Vector aVector = new Vector();
     aVector.add(aUsers.getUserName());
-    return SQLTools.getInstance().preparedDelete(aConn,"delete from USERS where USER_NAME=?",aVector);
+    int iReturn =  SQLTools.getInstance().preparedDelete(aConn,"delete from USERS where USER_NAME=?",aVector);
+	Global.refreshAuthenticatedFunctionInfoList();
+    return iReturn; 
   }
 
   public int update(Users aUsers) throws Exception{
@@ -41,7 +46,9 @@ public class UsersBeanFactory {
     aVector.add( aUsers.getUserValidate() );
     aVector.add( aUsers.getUserDesc() );
     aVector.add(aUsers.getUserName());
-    return SQLTools.getInstance().preparedUpdate(aConn,"update USERS set USER_NAME=?,USER_PASS=?,USER_VALIDATE=?,USER_DESC=? where USER_NAME=?" ,aVector);
+    int iReturn = SQLTools.getInstance().preparedUpdate(aConn,"update USERS set USER_NAME=?,USER_PASS=?,USER_VALIDATE=?,USER_DESC=? where USER_NAME=?" ,aVector);
+    Global.refreshAuthenticatedFunctionInfoList();
+    return iReturn; 
    }
 
   public DataSet Query(Users aUsers,String sOrderBy) throws Exception{
@@ -77,6 +84,7 @@ public class UsersBeanFactory {
       aTempUsers.setUserPass((String)aRS.getObject("USER_PASS"));
       aTempUsers.setUserValidate((String)aRS.getObject("USER_VALIDATE"));
       aTempUsers.setUserDesc((String)aRS.getObject("USER_DESC"));
+      //System.out.println("USER_NAME"+(String)aRS.getObject("USER_NAME"));
       aDS.addData(aTempUsers);
     }
     return aDS;

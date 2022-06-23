@@ -60,7 +60,7 @@ public class RoleAuthenticatedPermissionControlServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, java.io.IOException {
 		doPost(req, resp);
-	}
+	} 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
 		request.setCharacterEncoding("UTF-8");

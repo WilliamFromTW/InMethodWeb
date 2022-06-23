@@ -27,7 +27,7 @@ import inmethod.db.DBConnectionManager;
  *      (O)FUNCTION_URL=程式相對路徑
  *      (O)FUNCTION_DESC=程式備註
  * 回傳:
- *    [    
+ *    [     
  *        {"FUNCTION_NAME":"AuthenticationControlServlet","FUNCTION_URL":"inmethod/auth/AuthenticationControlServlet","FUNCTION_DESC":"登入驗證與修改密碼程式"},    
  *        {"FUNCTION_NAME":"AuthenticationControlServlet2","FUNCTION_URL":"inmethod/auth/AuthenticationControlServlet2","FUNCTION_DESC":"登入驗證與修改密碼程式2"}    
  *    ]

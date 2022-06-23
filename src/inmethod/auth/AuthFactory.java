@@ -16,19 +16,23 @@ import inmethod.commons.rdb.DataSet;
 
 public class AuthFactory {
 	
+	//private static  WebAuthentication aWebAuthentication = null;
 
 	public static WebAuthentication getWebAuthentication(HttpServletRequest request, HttpServletResponse response) {
+	//	if( aWebAuthentication==null ) {
 		Object obj[] = new Object[2];
 		obj[0] = request;
 		obj[1] = response;
 
 		try {
-			return (WebAuthentication) inmethod.commons.util.Reflection
+		return   (WebAuthentication) inmethod.commons.util.Reflection
 					.newInstance(inmethod.Global.getInstance().getEnvirenment("AUTHENTICATION_CLASS"), obj);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return null;
 		}
+	//	}
+//		return aWebAuthentication;
 	}
 
 	  public static RoleAuthorizedPermission getFunctionInfo(String sFunctionName,HttpServletRequest request, HttpServletResponse response){
@@ -142,6 +146,50 @@ public class AuthFactory {
 
 		return aDS;
 	}
+	
+	/**
+	 * Get  User Roles
+	 */
+	public static DataSet getRolesByUsers(String sUsers) {
+		UserRoles aUR = new UserRoles();
+		DataSet aDS = null;
+		UserRolesBeanFactory aBF = null;
+		aUR.setUserName(sUsers);
+		try (Connection aConn = DBConnectionManager.getWebDBConnection().getConnection()) {
+			aBF = UserRolesBeanFactory.getInstance(aConn);
+			aConn.setAutoCommit(true);
+			aBF.setConnection(aConn);
+			aDS = aBF.Query(aUR, UserRoles.FIELD_USER_NAME);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return aDS;
+	}	
+	
+	/**
+	 * Get All User Roles
+	 */
+	public static DataSet getAllUsersByValidated(boolean bValidate) {
+		Users aUsers = null;
+		DataSet aDS = null;
+		UsersBeanFactory aBF = null;
+		try (Connection aConn = DBConnectionManager.getWebDBConnection().getConnection()) {
+			aBF = UsersBeanFactory.getInstance(aConn);
+			aUsers = new Users();
+			if( bValidate)
+  			  aUsers.setUserValidate("Y");
+			else
+				aUsers.setUserValidate("N");
+			aConn.setAutoCommit(true);
+			aBF.setConnection(aConn);
+			aDS = aBF.Query(aUsers, null);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return aDS;
+	}
 
 	/**
 	 * Get All User Roles
@@ -224,6 +272,7 @@ public class AuthFactory {
 		try {
 			aWebAuth = AuthFactory.getWebAuthentication(request, response);
 			aAuthFunInfo = (RoleAuthorizedPermission) aWebAuth.getAuthorizedFunctionInfo(aWebAuth.getUserPrincipal(), sFunctionName);
+		//	System.out.println("aAuthFunInfo.getFunctionName()"+aAuthFunInfo.getFunctionName());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

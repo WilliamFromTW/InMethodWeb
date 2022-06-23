@@ -1,4 +1,4 @@
-<%@ page import="javax.servlet.http.*,javax.mail.*,java.util.*,inmethod.auth.*, inmethod.auth.inter_face.*,inmethod.commons.util.*"%>
+<%@ page import="javax.servlet.http.*,javax.mail.*,java.util.*,inmethod.Global,inmethod.auth.*, inmethod.auth.inter_face.*,inmethod.commons.util.*"%>
 <%!public String DateToStr(java.util.Date dateArg) throws Exception{
     return (StringConverter.DateToStr(dateArg)).substring(0,10) ;
   }
@@ -106,26 +106,17 @@
      * @see RoleAuthorizedPermission
      */
     public String getJsonAuthorizedFunctionInfoList(HttpServletRequest request, HttpServletResponse response){
-    	 WebAuthentication aWebaWebAuth = inmethod.auth.AuthFactory.getWebAuthentication(request, response);
-         boolean aReturn=false;
-         String sJson = "[";
-         Vector<RoleAuthorizedPermission> aRoleAuthorizedPermission = new Vector<RoleAuthorizedPermission>();
+    	 WebAuthentication aWebAuth = inmethod.auth.AuthFactory.getWebAuthentication(request, response);
+         String sJson = "[]";
          try{
-       	    aRoleAuthorizedPermission = aWebaWebAuth.getAuthorizedFunctionInfo(aWebaWebAuth.getUserPrincipal());
-       	    for(RoleAuthorizedPermission aFunInfo:aRoleAuthorizedPermission){
-       	    	if( aFunInfo.getFunctionVisible().equals("Y"))
-       	    	  sJson = sJson + aFunInfo.toJson()+",";
-       	    }
+        	 sJson = Global.getJsonAuthorizedFunctionInfoList(aWebAuth.getUserPrincipal());
+        	 return sJson;
          }catch(Exception ee){
-        	 
+        	 ee.printStackTrace();
          }
-         if( sJson.equals("[")){
-           sJson = "{\"NoPermission\":\"FAIL\"}";
-           return sJson;
-         }  
-         else{
-           return sJson.substring(0, sJson.length()-1)+"]";
-         }
+         
+          return "{\"NoPermission\":\"FAIL\"}";
+         
     }
      
      // 以group排序
