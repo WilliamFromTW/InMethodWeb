@@ -5,6 +5,7 @@ import inmethod.db.DBConnectionManager;
 import inmethod.hr.Employee;
 import inmethod.hr.EmployeeBeanFactory;
 import inmethod.commons.rdb.*;
+import inmethod.Global;
 import inmethod.auth.FunctionInfo;
 import inmethod.auth.FunctionInfoBeanFactory;
 import inmethod.auth.RoleAuthorizedPermission;
@@ -221,6 +222,17 @@ public class InMethodAuth implements WebAuthentication {
 		// return (String)session.getAttribute(AUTH_USER);
 	}
 
+	  /**
+	   * check user permission
+	   * @param sUser ID 
+	   * @param sFunction function name
+	   * @return boolean true-has permission , false : no permission
+	   */
+	  public boolean checkPermission(String sUserID,String sFunction) throws Exception{ 
+	  	  return Global.checkPermission(sUserID, sFunction);
+	  }
+	  	
+	
 	/**
 	 * check user permission
 	 * 

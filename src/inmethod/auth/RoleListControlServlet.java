@@ -115,8 +115,7 @@ public class RoleListControlServlet extends HttpServlet {
 						aConn.commit();
 						return;
 					}				
-				if (aWebAuth.getUserRoles(sUserID) != null
-						&& !aWebAuth.hasPermission(aWebAuth.getUserRoles(sUserID), FUNCTION_NAME)) {
+				if (!aWebAuth.checkPermission(sUserID, FUNCTION_NAME)) {
 					response.setStatus(1000);
 					out.println("{\"NoPermission\":\"FAIL\"}");
 					out.flush();

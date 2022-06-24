@@ -79,8 +79,7 @@ public class GenEmployeeTable extends HttpServlet {
 					System.out.println("Role : "+aUserRole);
 				}
 				*/
-				if (aWebAuth.getUserRoles(sUserID) != null
-						&& !aWebAuth.hasPermission(aWebAuth.getUserRoles(sUserID), FUNCTION_NAME)) {
+				if (!aWebAuth.checkPermission(sUserID, FUNCTION_NAME)) {
 					out.println("{\"NoPermission\":\"FAIL\"}");
 					out.flush();
 					out.close();

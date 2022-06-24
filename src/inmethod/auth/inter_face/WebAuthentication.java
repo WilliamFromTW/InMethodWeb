@@ -21,7 +21,16 @@ public interface WebAuthentication extends Authentication{
    * @return boolean true-has permission , false : no permission
    */
   public boolean hasPermission(Vector<UserRoles> aUserRoles,String sFunction) throws Exception ;
+  
+  /**
+   * check user permission
+   * @param sUserID use ID
+   * @param sFunction function name
+   * @return boolean true-has permission , false : no permission
+   */
+  public boolean checkPermission(String sUserID,String sFunction) throws Exception ;
 
+  
   /**
    * Get Authorized Function info.
    * <pre>

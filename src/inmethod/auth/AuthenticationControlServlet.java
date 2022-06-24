@@ -135,9 +135,7 @@ public class AuthenticationControlServlet extends HttpServlet {
 				} else if (sFlowID.equalsIgnoreCase("Login")) {
 					//System.out.println("userID=" + sUserID);
 					if (aWebAuth.login(sUserID, sPassword)) {
-						if (aWebAuth.getUserRoles(sUserID) != null
-								&& aWebAuth.hasPermission(aWebAuth.getUserRoles(sUserID), FUNCTION_NAME)) {
-							
+						if (!aWebAuth.checkPermission(sUserID, FUNCTION_NAME)) {
 							out.println("{\"Login\":\"OK\"}");
 						} else {
 							out.println("{\"Login\":\"FAIL\"}");

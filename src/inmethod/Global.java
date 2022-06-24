@@ -109,7 +109,24 @@ public class Global {
 			return "unknown";
 
 	}
-	
+	public static boolean checkPermission(String sUserID, String sFunction) {
+		if( aAllUserAuthenticatedFunctionInfoList==null )
+			refreshAuthenticatedFunctionInfoList();
+		  Vector<RoleAuthorizedPermission> aRoleAuthorizedPermission;
+	       try{
+      	    //aRoleAuthorizedPermission = aWebaWebAuth.getAuthorizedFunctionInfo(aWebaWebAuth.getUserPrincipal());
+     	    aRoleAuthorizedPermission = aAllUserAuthenticatedFunctionInfoList.get(sUserID);
+     	   // System.out.println("aRoleAuthorizedPermission="+aRoleAuthorizedPermission);
+     	    if( aRoleAuthorizedPermission!=null)
+     	    for(RoleAuthorizedPermission aFunInfo:aRoleAuthorizedPermission){
+     	    	if( aFunInfo.getFunctionName().equalsIgnoreCase(sFunction) )
+     	    	return true;
+     	    }
+       }catch(Exception ee){
+      	 ee.printStackTrace();
+       }
+	return false;	
+	}
 	public static void refreshAuthenticatedFunctionInfoList() {
 		System.out.println("refreshAuthenticatedFunctionInfoList ");
 		if( aAllUserAuthenticatedFunctionInfoList!=null ) {
@@ -148,6 +165,7 @@ public class Global {
        	    //aRoleAuthorizedPermission = aWebaWebAuth.getAuthorizedFunctionInfo(aWebaWebAuth.getUserPrincipal());
       	    aRoleAuthorizedPermission = aAllUserAuthenticatedFunctionInfoList.get(sUserID);
       	   // System.out.println("aRoleAuthorizedPermission="+aRoleAuthorizedPermission);
+      	    if( aRoleAuthorizedPermission!=null)
       	    for(RoleAuthorizedPermission aFunInfo:aRoleAuthorizedPermission){
       	    	if( aFunInfo.getFunctionVisible().equals("Y"))
       	    	  sJson = sJson + aFunInfo.toJson()+",";

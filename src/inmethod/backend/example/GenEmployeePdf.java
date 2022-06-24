@@ -75,8 +75,7 @@ public class GenEmployeePdf extends HttpServlet {
 					System.out.println("Role : "+aUserRole);
 				}
 				*/
-				if (aWebAuth.getUserRoles(sLoginUserID) != null
-						&& !aWebAuth.hasPermission(aWebAuth.getUserRoles(sLoginUserID), FUNCTION_NAME)) {
+				if (!aWebAuth.checkPermission(sLoginUserID, FUNCTION_NAME)) {
 					out.println("{\"NoPermission\":\"FAIL\"}");
 					out.flush();
 					out.close();

@@ -201,6 +201,17 @@ public class ADAuth implements WebAuthentication{
 //    return (String)session.getAttribute(AUTH_USER);
   }
 
+  
+  /**
+   * check user permission
+   * @param sUser ID 
+   * @param sFunction function name
+   * @return boolean true-has permission , false : no permission
+   */
+  public boolean checkPermission(String sUserID,String sFunction) throws Exception{ 
+  	  return Global.checkPermission(sUserID, sFunction);
+  }
+  
   /**
    * check user permission
    * @param aUserRoles the Roles user play
