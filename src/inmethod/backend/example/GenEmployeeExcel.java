@@ -130,11 +130,12 @@ public class GenEmployeeExcel extends HttpServlet {
 	      String sAccount = sParameter.get(0);
 	      if( sAccount==null || sAccount.equals("%" ) )
 	            sSqlCmd = "select users.user_name,employee.user_name as local_name,employee.user_english_name,employee.user_mail,users.user_validate,concat(user_roles.role_name,'(', role_desc,')') as role_name ,concat(FUNCTION_INFO.FUNCTION_DESC ,'(',ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME,')') as function_desc " +
-	          	                       " from users, user_roles ,role_list, employee,ROLE_AUTHORIZED_PERMISSION,FUNCTION_INFO  where FUNCTION_INFO.FUNCTION_NAME = ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME and role_list.role_name=ROLE_AUTHORIZED_PERMISSION.FUNCTION_ROLE and role_list.role_name=user_roles.role_name  and users.user_name=user_roles.user_name and users.user_name=employee.user_id "; 
+	          	                       " from USERS, USER_ROLES ,ROLE_LIST, EMPLOYEE,ROLE_AUTHORIZED_PERMISSION,FUNCTION_INFO  where FUNCTION_INFO.FUNCTION_NAME = ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME and role_list.role_name=ROLE_AUTHORIZED_PERMISSION.FUNCTION_ROLE and role_list.role_name=user_roles.role_name  and users.user_name=user_roles.user_name and users.user_name=employee.user_id "; 
 		      else
 		    	  sSqlCmd = "select users.user_name,employee.user_name as local_name,employee.user_english_name,employee.user_mail,users.user_validate,concat(user_roles.role_name,'(', role_desc,')') as role_name ,concat(FUNCTION_INFO.FUNCTION_DESC ,'(',ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME,')') as function_desc " +
-	 	    	                        " from users, user_roles ,role_list, employee,ROLE_AUTHORIZED_PERMISSION,FUNCTION_INFO  where FUNCTION_INFO.FUNCTION_NAME = ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME and role_list.role_name=ROLE_AUTHORIZED_PERMISSION.FUNCTION_ROLE and role_list.role_name=user_roles.role_name and users.user_name ='"+sAccount +"' and users.user_name=user_roles.user_name and users.user_name=employee.user_id "; 
-	      //System.out.println("sql cmd="+sSqlCmd);
+	 	    	                        " from users, user_roles ,role_list, employee,ROLE_AUTHORIZED_PERMISSION,FUNCTION_INFO  where FUNCTION_INFO.FUNCTION_NAME = ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME and role_list.role_name=ROLE_AUTHORIZED_PERMISSION.FUNCTION_ROLE and role_list.role_name=user_roles.role_name and users.user_name ='"+sAccount +"' and users.user_name=user_roles.user_name and users.user_name=employee.user_id ";
+	      sSqlCmd = sSqlCmd.toUpperCase();
+	      System.out.println("sql cmd="+sSqlCmd);
 	      aRS =  SQLTools.getInstance().Select(aConn, sSqlCmd);
 	      String sReportName = FUNCTION_NAME; 
 		  sReturn = sReportName+ "-" +  Global.getInstance().getCurrentDateString()+ ".xlsx";

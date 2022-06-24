@@ -134,19 +134,19 @@ public class GenEmployeeTable extends HttpServlet {
 	      else
 	    	  sSqlCmd = "select users.user_name,employee.user_name as local_name,employee.user_english_name,employee.user_mail,users.user_validate,concat(user_roles.role_name,'(', role_desc,')') as role_name ,concat(FUNCTION_INFO.FUNCTION_DESC ,'(',ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME,')') as function_desc " +
  	    	                        " from users, user_roles ,role_list, employee,ROLE_AUTHORIZED_PERMISSION,FUNCTION_INFO  where FUNCTION_INFO.FUNCTION_NAME = ROLE_AUTHORIZED_PERMISSION.FUNCTION_NAME and role_list.role_name=ROLE_AUTHORIZED_PERMISSION.FUNCTION_ROLE and role_list.role_name=user_roles.role_name and users.user_name ='"+sAccount +"' and users.user_name=user_roles.user_name and users.user_name=employee.user_id"; 
-
+	      sSqlCmd = sSqlCmd.toUpperCase();
 	      System.out.println("sql cmd="+sSqlCmd);
 	      
 	      aRS = SQLTools.getInstance().Select(aConn, sSqlCmd);
 	      
 		  // excel標題, data-field對應到sql statement,大小寫要一致
-	      sFieldName = "<th data-sortable='true' data-valign='middle' data-align='center' data-field='user_name'>帳號</th>"+
-	    		              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='local_name' data-sortable='true' data-valign='middle' data-align='center'>名字</th>" +
-	    		              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='user_english_name'>英文名字</th>" +
-	    		              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='user_mail'>email</th>" +
-	    		              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='user_validate'>有效</th>" +
-                              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='role_name'>角色</th>" +
-                              "<th data-sortable='true' data-valign='middle' data-align='left' data-field='function_desc'>程式</th>";
+	      sFieldName = "<th data-sortable='true' data-valign='middle' data-align='center' data-field='USER_NAME'>帳號</th>"+
+	              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='LOCAL_NAME' data-sortable='true' data-valign='middle' data-align='center'>名字</th>" +
+	              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='USER_ENGLISH_NAME'>英文名字</th>" +
+	              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='USER_MAIL'>email</th>" +
+	              "<th data-sortable='true' data-valign='middle' data-align='center' data-field='USER_VALIDATE'>有效</th>" +
+                  "<th data-sortable='true' data-valign='middle' data-align='center' data-field='ROLE_NAME'>角色</th>" +
+                  "<th data-sortable='true' data-valign='middle' data-align='left' data-field='FUNCTION_DESC'>程式</th>";
 	      
 	       
 	      JsonArray aJA = JsonUtil.ResultSetToJsonArray(aRS);
