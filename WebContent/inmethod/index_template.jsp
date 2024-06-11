@@ -1,4 +1,4 @@
-<%@page import="inmethod.*"%>
+<%@page import="inmethod_custom.*"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/inmethod/global.jsp"%>
 

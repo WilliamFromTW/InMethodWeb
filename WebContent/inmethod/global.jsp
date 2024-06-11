@@ -1,4 +1,4 @@
-<%@ page import="javax.servlet.http.*,javax.mail.*,java.util.*,inmethod.Global,inmethod.auth.*, inmethod.auth.inter_face.*,inmethod.commons.util.*"%>
+<%@ page import="javax.servlet.http.*,javax.mail.*,java.util.*,inmethod_custom.Global,inmethod.auth.*,inmethod.auth.inter_face.*,inmethod.commons.util.*"%>
 <%!public String DateToStr(java.util.Date dateArg) throws Exception{
     return (StringConverter.DateToStr(dateArg)).substring(0,10) ;
   }
@@ -142,11 +142,11 @@
       */
      public void sendmail(String sFrom,Vector<String> aTo,Vector<String> aCc,String sTopic,String sMessage){
        try{
-    	 String sEncode = inmethod.Global.getInstance().getEnvirenment("ENCODE");
+    	 String sEncode = inmethod_custom.Global.getInstance().getEnvirenment("ENCODE");
     	 // from
     	 
     	 // session
-    	 Session session = MailTool.buildSession( (String) inmethod.Global.getInstance().getEnvirenment("MAIL_SERVER_HOST" ));
+    	 Session session = MailTool.buildSession( (String) inmethod_custom.Global.getInstance().getEnvirenment("MAIL_SERVER_HOST" ));
     	 // html with images
     	 HtmlMultiPart aHMP= new HtmlMultiPart(sEncode);
     	 aHMP.setContent(sMessage);

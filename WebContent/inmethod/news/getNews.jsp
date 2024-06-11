@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page
-	import="inmethod.*,org.apache.commons.fileupload.*,  java.text.*,java.util.*,java.io.*, java.sql.*"%>
+	import="inmethod_custom.*,org.apache.commons.fileupload.*,java.text.*,java.util.*,java.io.*,java.sql.*"%>
 <%@ page import="inmethod.commons.util.*"%>
 <%@ page import="inmethod.auth.FunctionInfo,inmethod.auth.AuthFactory"%>
 <%@ include file="/inmethod/global.jsp"%>
